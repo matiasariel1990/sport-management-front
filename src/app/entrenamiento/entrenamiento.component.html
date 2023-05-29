@@ -1,0 +1,78 @@
+
+<div class="container card">
+    <div class="info-section section">
+        <div class="titulo">
+        {{ titulo }}
+        </div>
+        <div class="sub-titulo">
+        Fecha: {{fecha}} {{hs}}
+        </div>
+        <div>
+        <p><strong>Equipos convocados:</strong></p> 
+        <div>
+            <div class="lista" *ngFor="let equipo of equiposDelEvento;">
+                <li>{{equipo.name}}</li>
+            </div>
+            <p *ngIf="!tieneEquipos()">No hay equipos convocados!</p>
+        </div>
+        </div>
+    </div>
+    <div class="btn-section section">
+        <div class="btn-pre-evento">
+            <a class="btn" (click)="habilitarEquipos()"> + Equipo</a>
+            <a class="btn" (click)="habilitarJugadores()"> + Participante</a>
+            <a class="btn" (click)="cambiarCumplirFecha()">En Fecha</a>
+            
+        </div>
+        <div [ngClass]="finalizadoClass()">
+            <a class="btn" (click)="habilitarPasarLista()"> Pasar Lista</a>
+            <a class="btn"> Calificar Entrenamiento</a>
+        </div>
+        
+        
+    </div>
+    <div class="manage-section">
+        <div [ngClass]="listaEquiposEstilo()" >
+            <div class="seleccion-title">Seleccione los equipos:</div>
+            <div class="lista-seleccion" *ngFor="let equipo of equiposHabilitados; index as i;">
+                <p (click)="seleccionar(equipo)" [ngClass]="equipoadd(equipo)">{{equipo.name}}</p>
+            </div>
+            <div class="aling-right">
+            <a class="btn" (click)="agregarEquipos()"> Confirmar</a>
+            </div>
+        </div>
+        <div [ngClass]="listaJugadoresEstilo()" >
+            <div class="seleccion-title"><p>Seleccione los jugadores:</p></div>
+            <div class="lista-seleccion" *ngFor="let jugador of jugadoresHablitados; index as i;">
+                <p (click)="seleccionarJug(jugador)" [ngClass]="jugadoradd(jugador)">{{jugador.name}}</p>
+            </div>
+            <div class="aling-right">
+            <a class="btn" (click)="agregarJugadores()"> Confirmar</a>
+            </div>
+        </div>
+        <div [ngClass]="listaJugadoresPasarLista()" >
+            <div class="seleccion-title">Seleccione los asistentes:</div>
+            <div>
+                <p>Info:</p>
+                <p>Asistentes: {{ jugadoresPresentes.size }}</p>
+                <p>Ausencias: {{ jugadoresDelEvento.size - jugadoresPresentes.size }}</p>
+            </div>
+            <p>Seleccionar Todos <input type="checkbox" [checked]="todosPresentes" 
+                (change)="todosPresentesChanged()"> </p>
+            <a class="btn" (click)="invertirSeleccion()"> Invertir Seleccion</a>
+            <div class="lista-seleccion" *ngFor="let jugador of jugadoresDelEvento; index as i;">
+                <div>
+                    <p (click)="darPresent(jugador)" [ngClass]="jugadorPresent(jugador)">
+                        {{jugador.name}} 
+                        <ion-icon name="medical-outline" *ngIf="jugador.isIll"></ion-icon>
+                    </p>
+                </div>
+                
+            </div>
+            <div class="aling-right">
+            <a class="btn" (click)="agregarJugadores()"> Confirmar</a>
+            </div>
+        </div>
+
+    </div>
+</div>
