@@ -44,9 +44,14 @@ const JUGADORES: Jugador[] = [
 
 export class EntrenamientoComponent implements OnInit{
   
+  /*ESTOS DATOS LOS VOY A TOMAR DE UN SERVICIO */
+
   titulo = "Entrenamiento";
   fecha = "07/02";
   hs = "16:00 hs";
+
+  /*FIN -ESTOS DATOS LOS VOY A TOMAR DE UN SERVICIO */
+
   equiposSeleccionados = new Set<Equipo>();
   jugadoresSeleccionados = new Set<Jugador>();
   
@@ -59,6 +64,9 @@ export class EntrenamientoComponent implements OnInit{
   manageSectionPasarLista: boolean;
   todosPresentes: boolean;
 
+
+  jugadoresLesionados: number;
+
   enFecha: boolean;
 
   constructor(){
@@ -67,6 +75,7 @@ export class EntrenamientoComponent implements OnInit{
     this.manageSectionPasarLista = false;
     this.enFecha = false;
     this.todosPresentes = false;
+    this.jugadoresLesionados = 0;
 
     /*MOCKEO PARA TRABAJAR CON PASAR LISTA. ELIMINAR DESPUES*/
     for(let jug of JUGADORES){
@@ -89,25 +98,7 @@ export class EntrenamientoComponent implements OnInit{
     this.manageSectionEquipo = false;
     this.manageSectionJugadores = false;
     this.manageSectionPasarLista = false;
-  }
-
-  habilitarEquipos(): void{
-    if(this.manageSectionEquipo){
-      this.deshabilitarTodo();
-    }else{
-      this.deshabilitarTodo();
-      this.manageSectionEquipo = true;
-    }
-  }
-
-  habilitarJugadores():void{
-    if(this.manageSectionJugadores){
-      this.deshabilitarTodo();
-    }else{
-      this.deshabilitarTodo();
-      this.manageSectionJugadores = true;
-    }
-  }
+  }  
 
   habilitarPasarLista(){
     if(this.manageSectionPasarLista){
@@ -118,16 +109,141 @@ export class EntrenamientoComponent implements OnInit{
     }
   }
 
+  
+
+  finalizadoClass(){
+    return {'btn-post-evento': true, 
+    'hide' : !this.enFecha,
+    }
+  }
+
+  /*
+   Seccion de Agregar Equipos
+   
+   */ 
+
+   tieneEquipos(): boolean{
+    return this.equiposDelEvento.size > 0;
+  }
+
+   habilitarEquipos(): void{
+    if(this.manageSectionEquipo){
+      this.deshabilitarTodo();
+    }else{
+      this.deshabilitarTodo();
+      this.manageSectionEquipo = true;
+    }
+    }
+
   listaEquiposEstilo(){
     return {'hide' : !this.manageSectionEquipo};
   }
 
+  seleccionar(equipo : Equipo){
+    if(!this.equiposSeleccionados.delete(equipo)){
+      this.equiposSeleccionados.add(equipo);
+    }
+  }
+
+  equipoadd(equipo:Equipo){
+    return {'list-item': true, 'list-item:hover' : true,
+    'list-item-add' : this.equiposSeleccionados.has(equipo)}; 
+  }
+
+  agregarEquipos(){
+    this.equiposDelEvento = new Set<Equipo>();
+    for(let eq of this.equiposSeleccionados){
+      this.equiposDelEvento.add(eq);
+    }
+  }
+
+
+
+   /*
+   FIN Agregar Equipos
+   
+   */ 
+
+  invertirSeleccion(){
+    for(let jug of this.jugadoresDelEvento){
+        this.darPresent(jug);
+    }
+  }
+
+  /* Seccion Agregar Jugadores */
   listaJugadoresEstilo(){
     return {'hide' : !this.manageSectionJugadores};
   }
 
+  seleccionarJug(jugador : Jugador){
+    if(!this.jugadoresSeleccionados.delete(jugador)){
+      this.jugadoresSeleccionados.add(jugador);
+    }
+  }
+
+  agregarJugadores(){
+    //agregar Jugadores -> despues vemos
+    this.jugadoresDelEvento = new Set<Jugador>();
+    for(let jug of this.jugadoresSeleccionados){
+      this.jugadoresDelEvento.add(jug);
+    }
+  }
+
+
+  jugadoradd(jugador:Jugador){
+    return {'list-item': true, 'list-item:hover' : true,
+    'list-item-add' : this.jugadoresSeleccionados.has(jugador)}; 
+  }
+  
+  habilitarJugadores():void{
+    if(this.manageSectionJugadores){
+      this.deshabilitarTodo();
+    }else{
+      this.deshabilitarTodo();
+      this.manageSectionJugadores = true;
+    }
+  }
+
+  /* FIN Agregar Jugadores */
+
+
+  /*Inicio pasar Presente */
+
+  darPresent(jugador : Jugador){
+    if(!this.jugadoresPresentes.delete(jugador)){
+      if(!jugador.isIll){
+        this.jugadoresPresentes.add(jugador);
+      }
+    }else{
+      this.todosPresentes = false;
+    }
+  }
+
+  jugadorPresent(jugador:Jugador){
+    if(this.todosPresentes){
+      return {'list-item': true, 'list-item:hover' : true,
+      'disable': jugador.isIll, 
+      'list-item-add' : !jugador.isIll}; 
+    }
+    return {'list-item': true, 'list-item:hover' : true,
+    'disable': jugador.isIll, 
+    'list-item-add' : this.jugadoresPresentes.has(jugador)}; 
+  }
+
   listaJugadoresPasarLista(){
+    this.contarLesionados();
     return {'hide' : !this.manageSectionPasarLista};
+  }
+
+  contarLesionados(){
+    var contador : number;
+    contador = 0;
+    for(let jug of this.jugadoresDelEvento){
+      if(jug.isIll){
+        contador++;
+      }
+    }
+    this.jugadoresLesionados = contador;
   }
 
   todosPresentesChanged(): void{
@@ -144,81 +260,22 @@ export class EntrenamientoComponent implements OnInit{
     }
   }
 
-  invertirSeleccion(){
-    for(let jug of this.jugadoresDelEvento){
-        this.darPresent(jug);
-    }
-  }
+  /*Inicio pasar Presente */
 
-  seleccionar(equipo : Equipo){
-    if(!this.equiposSeleccionados.delete(equipo)){
-      this.equiposSeleccionados.add(equipo);
-    }
-  }
-
-  seleccionarJug(jugador : Jugador){
-    if(!this.jugadoresSeleccionados.delete(jugador)){
-      this.jugadoresSeleccionados.add(jugador);
-    }
-  }
-
-  darPresent(jugador : Jugador){
-    if(!this.jugadoresPresentes.delete(jugador)){
-      if(!jugador.isIll){
-        this.jugadoresPresentes.add(jugador);
-      }
-    }else{
-      this.todosPresentes = false;
-    }
-  }
-
-  equipoadd(equipo:Equipo){
-    return {'list-item': true, 'list-item:hover' : true,
-    'list-item-add' : this.equiposSeleccionados.has(equipo)}; 
-  }
-
-  jugadoradd(jugador:Jugador){
-    return {'list-item': true, 'list-item:hover' : true,
-    'list-item-add' : this.jugadoresSeleccionados.has(jugador)}; 
-  }
-
-  jugadorPresent(jugador:Jugador){
-    if(this.todosPresentes){
-      return {'list-item': true, 'list-item:hover' : true,
-      'disable': jugador.isIll, 
-      'list-item-add' : !jugador.isIll}; 
-    }
-    return {'list-item': true, 'list-item:hover' : true,
-    'disable': jugador.isIll, 
-    'list-item-add' : this.jugadoresPresentes.has(jugador)}; 
-  }
-
-  agregarEquipos(){
-    this.equiposDelEvento = new Set<Equipo>();
-    for(let eq of this.equiposSeleccionados){
-      this.equiposDelEvento.add(eq);
-    }
-  }
-
-  agregarJugadores(){
-    //agregar Jugadores -> despues vemos
-    this.jugadoresDelEvento = new Set<Jugador>();
-    for(let jug of this.jugadoresSeleccionados){
-      this.jugadoresDelEvento.add(jug);
-    }
-  }
 
   
-  tieneEquipos(): boolean{
-    return this.equiposDelEvento.size > 0;
-  }
 
-  finalizadoClass(){
-    return {'btn-post-evento': true, 
-    'hide' : !this.enFecha,
-    }
-  }
+  
 
+  
 
+  
+
+  
+  
+  
+  
+
+  
   
 }
