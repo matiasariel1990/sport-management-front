@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Jugador } from '../equipo/equipo.component';
+import { EquipoService } from '../equipo.service';
 
 
 export interface Calificacion{
@@ -89,6 +90,7 @@ export class EntrenamientoComponent implements OnInit{
 
   /*FIN -ESTOS DATOS LOS VOY A TOMAR DE UN SERVICIO */
 
+  equiposHabilitados = new Set<Equipo>();
   equiposSeleccionados = new Set<Equipo>();
   jugadoresSeleccionados = new Set<Jugador>();
   
@@ -112,7 +114,7 @@ export class EntrenamientoComponent implements OnInit{
 
   enFecha: boolean;
 
-  constructor(){
+  constructor(private equipoService : EquipoService){
     this.manageSectionEquipo = false;
     this.manageSectionJugadores = false;
     this.manageSectionPasarLista = false;
@@ -121,6 +123,8 @@ export class EntrenamientoComponent implements OnInit{
     this.jugadoresLesionados = 0;
     this.ventanaCalificarJugador = false;
     this.jugadorACalificar = JUGADOR;
+    this.equiposHabilitados = equipoService.getEquiposSeleccionables();
+    
     /*MOCKEO PARA TRABAJAR CON PASAR LISTA. ELIMINAR DESPUES*/
     for(let jug of JUGADORES){
       this.jugadoresDelEvento.add(jug);
@@ -131,7 +135,7 @@ export class EntrenamientoComponent implements OnInit{
     }
   }
 
-  equiposHabilitados = EQUIPOS;
+  
   jugadoresHablitados = JUGADORES;
   
   ngOnInit(): void {
