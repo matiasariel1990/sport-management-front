@@ -1,11 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import { Jugador } from '../equipo/equipo.component';
 
+
+export interface Calificacion{
+  id: number;
+  name: string;
+  valor: number;
+}
+
+export interface Calificacionugador{
+  jugador: Jugador;
+  calificacion: Calificacion;
+}
+
+export class CalificacionugadorImpl implements Calificacionugador{
+  jugador = JUGADOR;
+  calificacion = CLASIFICACION;
+  
+  public CalificacionugadorImpl(jugador : Jugador, 
+    clasificacionArg : Calificacion){
+    this.jugador = jugador;
+    this.calificacion = clasificacionArg;
+  }
+  
+}
+
+
+
 export interface Equipo {
   name: string;
   id: number;
   jugadores: number;
 }
+
+const CALIFICACIONES: Calificacion[] = [
+  {id: 1, name: "Expulsion", valor: 20},
+  {id: 2, name: "Malo", valor: 75},
+  {id: 3, name: "Normal", valor: 100},
+  {id: 4, name: "Sobresaliente", valor: 120},
+]
 
 const EQUIPOS: Equipo[] = [
   {id: 1, name: 'M17', jugadores: 15},
@@ -17,6 +50,10 @@ const EQUIPOS: Equipo[] = [
   {id: 7, name: 'PRIMERA', jugadores: 15},
 ];
 
+const JUGADOR = {id: 1, name: 'Owen Farrell', peso: 98, pos: 'Pilier', isIll: true};
+const CLASIFICACION = {
+  id: 1, name: "Expulsion", valor: 20
+};
 
 const JUGADORES: Jugador[] = [
   {id: 1, name: 'Owen Farrell', peso: 98, pos: 'Pilier', isIll: true},
@@ -64,6 +101,12 @@ export class EntrenamientoComponent implements OnInit{
   manageSectionPasarLista: boolean;
   todosPresentes: boolean;
 
+  calificaciones = new Set<Calificacion>;
+  calificacionJugadores = new Set<Calificacionugador>;
+
+  ventanaCalificarJugador :boolean;
+  jugadorACalificar : Jugador;
+
 
   jugadoresLesionados: number;
 
@@ -76,10 +119,15 @@ export class EntrenamientoComponent implements OnInit{
     this.enFecha = false;
     this.todosPresentes = false;
     this.jugadoresLesionados = 0;
-
+    this.ventanaCalificarJugador = false;
+    this.jugadorACalificar = JUGADOR;
     /*MOCKEO PARA TRABAJAR CON PASAR LISTA. ELIMINAR DESPUES*/
     for(let jug of JUGADORES){
       this.jugadoresDelEvento.add(jug);
+    }
+
+    for(let cal of CALIFICACIONES){
+      this.calificaciones.add(cal);
     }
   }
 
@@ -260,8 +308,29 @@ export class EntrenamientoComponent implements OnInit{
     }
   }
 
-  /*Inicio pasar Presente */
+  /*FIN pasar Presente */
+  calificar(jugador : Jugador){
+    this.ventanaCalificarJugador = true;
+    this.jugadorACalificar = jugador;
+  }
+ 
+  calificarJugador(clasificacionArg: Calificacion) : any{
+    this.ventanaCalificarJugador = false;
+    for(let calificacion of this.calificacionJugadores){
+      if(calificacion.jugador == this.jugadorACalificar){
+        calificacion.calificacion = clasificacionArg;
+        break;
+      }
+    }
+    let clasificacionNueva = new CalificacionugadorImpl();
+    clasificacionNueva.calificacion = clasificacionArg;
+    clasificacionNueva.jugador = this.jugadorACalificar;
+    this.calificacionJugadores.add(clasificacionNueva);
+  }
 
+  calificarVentana(){
+    return {'hide' : !this.ventanaCalificarJugador};
+  }
 
   
 
