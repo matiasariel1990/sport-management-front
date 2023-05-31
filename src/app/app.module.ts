@@ -8,12 +8,14 @@ import {MatTableModule} from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EntrenamientoComponent } from './entrenamiento/entrenamiento.component';
 import { IonicModule } from '@ionic/angular';
+import { ListaEquiposComponent } from './lista-equipos/lista-equipos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EquipoComponent,
-    EntrenamientoComponent
+    EntrenamientoComponent,
+    ListaEquiposComponent
   ],
   imports: [
     BrowserModule,

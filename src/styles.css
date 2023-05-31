@@ -3,3 +3,113 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; font-size: 0.65; }
 
+
+
+
+/*GENERALES*/
+.list-item{
+    cursor:pointer;
+    color:#a6a6a6;
+}
+
+.list-item:hover{
+    font-weight: 500;
+}
+
+.list-item-add{
+    font-weight: 700;
+    color:black;
+}
+
+.lista{
+    display: flex;
+}
+
+
+.section{
+    padding-bottom: 0.5rem;
+}
+
+.titulo{
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.sub-titulo{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.btn-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:0.5rem;
+}
+
+.btn{
+    background-color:#365791;
+    padding-top: 0.5rem;
+    padding: 0.5rem;
+    color:white;
+    border-radius: 0.5rem;
+    font-weight: 500;
+}
+
+.btn:hover{
+    cursor: pointer;
+    background-color:#466191;
+}
+
+.btn-pre-evento, .btn-post-evento{
+    display: flex;
+    gap: 1.2rem;
+}
+
+.hide{
+    display: none;
+}
+
+.seleccion-title{
+    font-size: 1.1rem;
+    border-top: 2px solid #a6a6a6;
+    border-bottom: 2px solid #a6a6a6;
+}
+
+.list-selection-option{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+
+.disable{
+    cursor: not-allowed;
+}
+
+
+
+
+.lista-seleccion{
+    margin-left: 1rem;
+}
+
+.aling-right{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+
+.card-selection{
+    padding: 0.3rem 1rem;
+    border: 1.5px solid #000000;
+    border-radius: 0.5rem;
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
+}

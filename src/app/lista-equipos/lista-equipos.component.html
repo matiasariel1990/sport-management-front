@@ -1,0 +1,9 @@
+<div>
+    <div class="seleccion-title">Seleccione los equipos:</div>
+    <div class="lista-seleccion" *ngFor="let equipo of equiposHabilitados; index as i;">
+        <p (click)="seleccionar(equipo)" [ngClass]="equipoadd(equipo)">{{equipo.name}}</p>
+    </div>
+    <div class="aling-right">
+    <a class="btn" (click)="agregarEquipos()"> Confirmar</a>
+    </div>
+</div>
