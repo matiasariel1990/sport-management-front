@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Jugador } from '../equipo/equipo.component';
-import { EquipoService } from '../equipo.service';
+import { EquipoService } from '../servicios/equipo.service';
 
 
 export interface Calificacion{
@@ -207,6 +207,12 @@ export class EntrenamientoComponent implements OnInit{
     for(let eq of this.equiposSeleccionados){
       this.equiposDelEvento.add(eq);
     }
+  }
+
+  reloadEquipos(event: any){
+    debugger;
+    console.log(event);
+    this.equiposDelEvento = this.equipoService.getEquiposSeleccionados();
   }
 
 

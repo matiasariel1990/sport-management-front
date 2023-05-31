@@ -21,10 +21,14 @@ const EQUIPOS: Equipo[] = [
 })
 
 export class EquipoService {
-
+  
   equipoSelecionables = EQUIPOS;
 
-  constructor() { }
+  equiposDelEntrenamiento : Set<Equipo>;
+
+  constructor() {
+    this.equiposDelEntrenamiento = new Set<Equipo>();
+   }
 
   public getEquiposSeleccionables() : Set<Equipo>{
     let equiposSeleccionablesSet = new Set<Equipo>;
@@ -33,5 +37,14 @@ export class EquipoService {
     }
     return equiposSeleccionablesSet;
   }
+
+  public getEquiposSeleccionados() : Set <Equipo>{
+    return  this.equiposDelEntrenamiento;
+  }
+
+  public updateEquiposEntrenamiento(equipos : Set<Equipo>) {
+    this.equiposDelEntrenamiento = equipos;
+  }
+
 
 }
