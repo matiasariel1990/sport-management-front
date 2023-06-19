@@ -1,19 +1,21 @@
 
 <div class="container card">
     <div class="info-section section">
-        <div class="titulo">
-        {{ titulo }}
-        </div>
-        <div class="sub-titulo">
-            Fecha: {{fecha}} {{hs}}
+        <div class="titulo-container">
+            <div class="titulo">
+                {{ titulo }}
+            </div>
+            <div class="sub-titulo">
+                Fecha: {{fecha}} {{hs}}
+            </div>
         </div>
         <div>
-        <p><strong>Equipos convocados:</strong></p> 
+         <a class="title-info"><strong>Equipos convocados:</strong></a> &nbsp; <a class="info" *ngIf="!tieneEquipos()">No hay equipos convocados!</a> 
         <div>
             <div class="lista" *ngFor="let equipo of equiposDelEvento;">
                 <li>{{equipo.name}}</li>
             </div>
-            <p *ngIf="!tieneEquipos()">No hay equipos convocados!</p>
+            
         </div>
         </div>
     </div>

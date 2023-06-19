@@ -16,3 +16,14 @@
     scroll-behavior: auto;
 }
 
+.equipos-container{
+    font-size: 1rem;
+}
+
+.title-info{
+    color:rgb(37, 37, 37)
+}
+
+.info{
+    color: rgb(172, 172, 172);
+}
