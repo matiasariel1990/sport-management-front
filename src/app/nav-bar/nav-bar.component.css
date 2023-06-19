@@ -1,0 +1,24 @@
+.nav-bar{
+    height: 3.5rem;
+    background-color: #191c25;
+    font-size: 2rem;
+    font-weight: 500;
+    color: #e0e0e0e7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 10px;
+    margin-bottom: 1rem;
+}
+
+.nav-bar-logo-name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-bar-menu{
+    font-weight: 700;
+    cursor: pointer;
+}
