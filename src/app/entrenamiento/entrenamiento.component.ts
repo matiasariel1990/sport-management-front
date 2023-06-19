@@ -163,6 +163,8 @@ export class EntrenamientoComponent implements OnInit{
 
   
 
+  
+
   finalizadoClass(){
     return {'btn-post-evento': true, 
     'hide' : !this.enFecha,

@@ -5,7 +5,7 @@
         {{ titulo }}
         </div>
         <div class="sub-titulo">
-        Fecha: {{fecha}} {{hs}}
+            Fecha: {{fecha}} {{hs}}
         </div>
         <div>
         <p><strong>Equipos convocados:</strong></p> 
@@ -28,12 +28,11 @@
             <a class="btn" (click)="habilitarPasarLista()"> Pasar Lista</a>
             <a class="btn"> Calificar Entrenamiento</a>
         </div>
-        
-        
     </div>
     <div class="manage-section">
         <app-lista-equipos [ngClass]="listaEquiposEstilo()"
-        (onUpdateEquiposEvent)="reloadEquipos($event)"> </app-lista-equipos>
+        (onUpdateEquiposEvent)="reloadEquipos($event)"
+        (onCloseEquiposEvent)="deshabilitarTodo()"> </app-lista-equipos>
         
         <div [ngClass]="listaJugadoresEstilo()" >
             <div class="seleccion-title"><p>Seleccione los jugadores:</p></div>
@@ -44,6 +43,7 @@
             <a class="btn" (click)="agregarJugadores()"> Confirmar</a>
             </div>
         </div>
+
         <div [ngClass]="listaJugadoresPasarLista()" >
             <div class="seleccion-title">Seleccione los asistentes:</div>
             <div>
@@ -64,9 +64,7 @@
                         {{jugador.name}} 
                         <ion-icon name="medical-outline" *ngIf="jugador.isIll"></ion-icon>
                     </p>
-
                 </div>
-                
             </div>
             <div class="aling-right">
             <a class="btn" (click)="agregarJugadores()"> Confirmar</a>
@@ -89,9 +87,12 @@
                 </div>
                 <div class="card-selection" [ngClass]="calificarVentana()">
                     <p>Selecciona una Calificacion:</p>
-                    <div class="lista-seleccion" *ngFor="let cal of calificaciones; index as i;">
-                        <p (click)="calificarJugador(cal)">{{cal.name}} {{cal.valor}}</p>
+                    <div class="lista-seleccion-container">
+                        <div class="lista-seleccion" *ngFor="let cal of calificaciones; index as i;">
+                            <p (click)="calificarJugador(cal)">{{cal.name}} {{cal.valor}}</p>
+                        </div>
                     </div>
+                    
                 </div>
             </div>
             

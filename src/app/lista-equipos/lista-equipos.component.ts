@@ -16,6 +16,7 @@ export class ListaEquiposComponent implements OnInit{
 
   @Output()
   onUpdateEquiposEvent = new EventEmitter<String>();
+  onCloseEquiposEvent = new EventEmitter<boolean>();
 
   constructor(private equipoServiceArg : EquipoService){
     this.equipoService = equipoServiceArg;
@@ -42,5 +43,9 @@ export class ListaEquiposComponent implements OnInit{
     this.equipoService.updateEquiposEntrenamiento(this.equiposSeleccionados);
     this.onUpdateEquiposEvent.emit("Hola");
     console.log("Se Emitio");
+  }
+
+  cerrar(){
+    this.onCloseEquiposEvent.emit(true);
   }
 }

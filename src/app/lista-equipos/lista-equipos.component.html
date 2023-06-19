@@ -4,6 +4,9 @@
         <p (click)="seleccionar(equipo)" [ngClass]="equipoadd(equipo)">{{equipo.name}}</p>
     </div>
     <div class="aling-right">
-    <a class="btn" (click)="agregarEquipos()"> Confirmar</a>
+        
+        <a class="btn" (click)="cerrar()"> Cancelar</a>
+        <a class="btn" (click)="agregarEquipos()"> Confirmar</a>
+    
     </div>
 </div>

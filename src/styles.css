@@ -1,12 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html , body{ height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; font-size: 0.65; }
 
 
-
-
 /*GENERALES*/
+
+
 .list-item{
     cursor:pointer;
     color:#a6a6a6;
@@ -31,12 +31,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; font-size: 
 }
 
 .titulo{
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
 }
 
 .sub-titulo{
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 500;
 }
 
@@ -97,8 +97,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; font-size: 
 
 .aling-right{
     display: flex;
-    flex-direction: column;
-    align-items: end;
+    gap: 1rem;
+    justify-content: end;
 }
 
 
