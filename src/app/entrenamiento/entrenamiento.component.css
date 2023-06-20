@@ -3,16 +3,45 @@
 }
 
 .card{
-    padding: 1rem;
+    padding: 0 1rem;
+    padding-top: 0.5rem;
     border-radius: 0.5rem;
-    box-shadow: 5px 8px 14px -1px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 5px 8px 14px -1px rgba(0,0,0,0.75);
-    -moz-box-shadow: 5px 8px 14px -1px rgba(0,0,0,0.75);
+    border-left: 8px solid #454545;
+    box-shadow: 2px 4px 5px 0px rgba(0,0,0,0.63);
+    -webkit-box-shadow: 2px 4px 5px 0px rgba(0,0,0,0.63);
+    -moz-box-shadow: 2px 4px 5px 0px rgba(0,0,0,0.63);
+    background-color: rgb(234, 234, 234);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.card:hover{
+    transform: scale(1.01);
 }
 
 .lista-seleccion-container{
     height: 200px;
     overflow-y: scroll;
     scroll-behavior: auto;
+}
+
+.equipos-container{
+    font-size: 1rem;
+}
+
+.sub-section{
+    padding-bottom: 0.3rem;
+}
+
+
+.title-info{
+    color:rgb(37, 37, 37)
+}
+
+.info{
+    color: rgb(172, 172, 172);
 }
 
