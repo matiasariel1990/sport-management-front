@@ -22,3 +22,41 @@
     font-weight: 700;
     cursor: pointer;
 }
+
+.menu{
+    left: 0;
+    top:0;
+    position: absolute;
+    transform: translate(0, 3.6rem);
+    background-color: #191c25;
+    font-size: 1.3rem;
+    font-weight: 500;
+    
+    list-style: none;
+}
+
+.menu-item{
+    text-decoration: none;
+    color: #e0e0e0e7;
+    cursor: pointer;
+    width: 360px;
+    padding: 0.3rem;
+    padding-left: 2rem;
+    padding-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.4s;
+}
+
+.menu-item:hover{
+    background-color: #2a2d35;
+}
+
+.active{
+    background-color: #2a2d35;
+}
+
+.hide{
+    left:-100%
+}

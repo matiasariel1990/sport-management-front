@@ -14,10 +14,8 @@
 </style>
 
   <app-nav-bar></app-nav-bar>
-
+  
   <div class="main-conainer">
-      <div *ngFor="let entrenamiento of entrenamientos;">
-        <app-entrenamiento [entrenamiento]="entrenamiento"></app-entrenamiento>
-      </div>
+    <router-outlet></router-outlet>
   </div>
 
