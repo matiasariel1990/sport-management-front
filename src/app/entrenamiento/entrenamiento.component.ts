@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Input } from '@angular/core';
 import { Jugador } from '../equipo/equipo.component';
 import { EquipoService } from '../servicios/equipo.service';
 
@@ -87,6 +87,8 @@ export class EntrenamientoComponent implements OnInit{
   titulo = "Entrenamiento";
   fecha = "07/02";
   hs = "16:00 hs";
+
+  @Input() selected : boolean = false;
 
   /*FIN -ESTOS DATOS LOS VOY A TOMAR DE UN SERVICIO */
 
@@ -344,19 +346,8 @@ export class EntrenamientoComponent implements OnInit{
     return {'hide' : !this.ventanaCalificarJugador};
   }
 
-  
-
-  
-
-  
-
-  
-
-  
-  
-  
-  
-
-  
+  isSelected(){
+    return {'hide' : !this.selected};
+  }
   
 }
