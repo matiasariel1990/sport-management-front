@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Entrenamiento, EntrenamientoService } from './servicios/entrenamiento.service';
 
 @Component({
   selector: 'app-root',
@@ -7,28 +8,24 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'sport-management-front';
-  seleccion: boolean[] = [
-    false,
-    false,
-    false,
-    false,
-    false
-  ]
+  entrenamientos = new Set<Entrenamiento>;
   
-  seleccionar(nuevaSeleccion : number){
-    this.seleccion[0] = false;
-    this.seleccion[1] = false;
-    this.seleccion[2] = false;
-    this.seleccion[3] = false;
-    this.seleccion[4] = false;
-    this.seleccion[nuevaSeleccion - 1] = true;
+  
+  constructor(private entrenamientoSetvice : EntrenamientoService){
+    for(let entrenamiento of entrenamientoSetvice.getFinishedByEntity()){
+      this.entrenamientos.add(entrenamiento);
+    }
+    for(let entrenamiento of entrenamientoSetvice.getNextByEntity()){
+      this.entrenamientos.add(entrenamiento);
+    }
   }
 
-  seleccionado(seleccion : number):boolean{
-    var result : boolean; 
-    result = this.seleccion[seleccion -1]
-    debugger;
-    return result;
+  seleccionar(nuevaSeleccion : number){
+    
+  }
+
+  seleccionado():boolean{
+    return true;
   }
   
 
