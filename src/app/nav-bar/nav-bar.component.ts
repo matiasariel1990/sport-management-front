@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class NavBarComponent {
 
+  menuActivado:boolean = false;
+
+
+  activarMenu(){
+    this.menuActivado = !this.menuActivado;
+  }
+
+  clasesMenu(){
+    return {
+      'hide' : !this.menuActivado
+    }
+  }
+
 }

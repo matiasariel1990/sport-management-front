@@ -3,6 +3,24 @@
         <ion-icon name="american-football-outline"></ion-icon> Atletico San Andres
     </div>
     <div>
-        <ion-icon  class = 'nav-bar-menu' name="menu-outline"></ion-icon>
+        <ion-icon (click)="activarMenu()" class = 'nav-bar-menu' name="menu-outline"></ion-icon>
+    </div>
+    <div class="menu" [ngClass]="clasesMenu()">
+        <li class="menu-item">
+            Home <ion-icon name="chevron-forward-outline"></ion-icon>
+        </li>
+        <li class="menu-item">
+            Entrenamientos <ion-icon name="chevron-forward-outline"></ion-icon>
+        </li>
+        <li class="menu-item">
+            Equipos <ion-icon name="chevron-forward-outline"></ion-icon>
+        </li>
+        <li class="menu-item">
+            Jugadores <ion-icon name="chevron-forward-outline"></ion-icon>
+        </li>
+        <li class="menu-item">
+            Contacto <ion-icon name="chevron-forward-outline"></ion-icon>
+        </li>
     </div>
 </div>
+
