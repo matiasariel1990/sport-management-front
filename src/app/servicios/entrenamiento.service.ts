@@ -36,21 +36,39 @@ const ENTRENAMIENTOS_FINALIZADOS: Entrenamiento[] = [
 
 export class EntrenamientoService {
 
-  constructor() { }
+  siguientesEntrenamientos = new Set<Entrenamiento>;
+  entrenamientosPasados = new Set<Entrenamiento>;
+
+  constructor() { 
+    for(let entrenamiento of ENTRENAMIENTOS){
+      this.siguientesEntrenamientos.add(entrenamiento);
+    }
+    for(let entrenamiento of ENTRENAMIENTOS_FINALIZADOS){
+      this.entrenamientosPasados.add(entrenamiento);
+    }
+  }
 
   public getNextByEntity(): Set<Entrenamiento>{
-    let entrenamientos = new Set<Entrenamiento>;
-    for(let entrenamiento of ENTRENAMIENTOS){
-      entrenamientos.add(entrenamiento);
-    }
-    return entrenamientos;
+    return this.siguientesEntrenamientos;
   }
 
   public getFinishedByEntity(): Set<Entrenamiento>{
-    let entrenamientos = new Set<Entrenamiento>;
-    for(let entrenamiento of ENTRENAMIENTOS_FINALIZADOS){
-      entrenamientos.add(entrenamiento);
+    return this.entrenamientosPasados;
+  }
+
+  public getEntrenamientoById(id : number) : Entrenamiento{
+    let entrenamientoResult : Entrenamiento;
+    debugger;
+    for(let entrenamiento of this.siguientesEntrenamientos){
+      if(entrenamiento.id == id){
+        return entrenamiento;
+      }
     }
-    return entrenamientos;
+    for(let entrenamiento of this.siguientesEntrenamientos){
+      if(entrenamiento.id == id){
+        return entrenamiento;
+      }
+    }
+    return this.entrenamientosPasados.values().next().value;
   }
 }

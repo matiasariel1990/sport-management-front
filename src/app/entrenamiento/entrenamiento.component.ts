@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, Input } from '@angular/core';
 import { Jugador } from '../equipo/equipo.component';
 import { EquipoService } from '../servicios/equipo.service';
+import { Entrenamiento, EntrenamientoService } from '../servicios/entrenamiento.service';
 
 
 export interface Calificacion{
@@ -84,11 +85,10 @@ export class EntrenamientoComponent implements OnInit{
   
   /*ESTOS DATOS LOS VOY A TOMAR DE UN SERVICIO */
 
+  @Input()
+  entrenamiento!: Entrenamiento;
   titulo = "Entrenamiento";
-  fecha = "07/02";
-  hs = "16:00 hs";
 
-  @Input() selected : boolean = false;
 
   /*FIN -ESTOS DATOS LOS VOY A TOMAR DE UN SERVICIO */
 
@@ -116,7 +116,8 @@ export class EntrenamientoComponent implements OnInit{
 
   enFecha: boolean;
 
-  constructor(private equipoService : EquipoService){
+  constructor(private equipoService : EquipoService, 
+    private entrenamientoService : EntrenamientoService){
     this.manageSectionEquipo = false;
     this.manageSectionJugadores = false;
     this.manageSectionPasarLista = false;
@@ -135,6 +136,7 @@ export class EntrenamientoComponent implements OnInit{
     for(let cal of CALIFICACIONES){
       this.calificaciones.add(cal);
     }
+
   }
 
   
@@ -347,7 +349,7 @@ export class EntrenamientoComponent implements OnInit{
   }
 
   isSelected(){
-    return {'hide' : !this.selected};
+    return {'hide' : false};
   }
   
 }
