@@ -16,10 +16,8 @@
   <app-nav-bar></app-nav-bar>
 
   <div class="main-conainer">
-      <app-entrenamiento (click)="seleccionar(1)" [selected]="seleccion[0]"></app-entrenamiento>
-      <app-entrenamiento (click)="seleccionar(2)" [selected]="seleccion[1]"></app-entrenamiento>
-      <app-entrenamiento (click)="seleccionar(3)" [selected]="seleccion[2]"></app-entrenamiento>
-      <app-entrenamiento (click)="seleccionar(4)" [selected]="seleccion[3]"></app-entrenamiento>
-      <app-entrenamiento (click)="seleccionar(5)" [selected]="seleccion[4]"></app-entrenamiento>
+      <div *ngFor="let entrenamiento of entrenamientos;">
+        <app-entrenamiento [entrenamiento]="entrenamiento"></app-entrenamiento>
+      </div>
   </div>
 
