@@ -14,6 +14,10 @@
                 <li>{{equipo.name}}</li>
             </div>
             <p *ngIf="!tieneEquipos()">No hay equipos convocados!</p>
+        <div class="sub-section">
+         <a class="title-info"><strong>Equipos convocados:</strong></a> &nbsp; <a class="info" *ngIf="!tieneEquipos()">No hay equipos convocados!</a> 
+        <div class="lista">            
+            <li *ngFor="let equipo of equiposDelEvento;">{{equipo.name}}</li>
         </div>
         </div>
     </div>
