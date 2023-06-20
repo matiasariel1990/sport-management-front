@@ -1,14 +1,16 @@
 
 <div class="container card">
-    <div class="info-section section">
-        <div class="titulo">
-        {{ titulo }}
+    <div class="info-section">
+        <div class="titulo-container sub-section">
+            <div class="titulo">
+                {{ titulo }}
+            </div>
+            <div class="sub-titulo">
+                Fecha: {{fecha}} {{hs}}
+            </div>
         </div>
-        <div class="sub-titulo">
-            Fecha: {{fecha}} {{hs}}
-        </div>
-        <div>
-        <p><strong>Equipos convocados:</strong></p> 
+        <div class="sub-section">
+         <a class="title-info"><strong>Equipos convocados:</strong></a> &nbsp; <a class="info" *ngIf="!tieneEquipos()">No hay equipos convocados!</a> 
         <div>
             <div class="lista" *ngFor="let equipo of equiposDelEvento;">
                 <li>{{equipo.name}}</li>
@@ -21,7 +23,7 @@
         </div>
         </div>
     </div>
-    <div class="btn-section section">
+    <div class="btn-section section" [ngClass]="isSelected()">
         <div class="btn-pre-evento">
             <a class="btn" (click)="habilitarEquipos()"> + Equipo</a>
             <a class="btn" (click)="habilitarJugadores()"> + Participante</a>

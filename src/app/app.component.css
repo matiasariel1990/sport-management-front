@@ -1,0 +1,9 @@
+.main-conainer{
+    height: 100%;
+    line-height: 1em;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
