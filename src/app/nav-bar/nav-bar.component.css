@@ -31,11 +31,13 @@
     background-color: #191c25;
     font-size: 1.3rem;
     font-weight: 500;
-    color: #e0e0e0e7;
+    
     list-style: none;
 }
 
 .menu-item{
+    text-decoration: none;
+    color: #e0e0e0e7;
     cursor: pointer;
     width: 360px;
     padding: 0.3rem;
@@ -48,6 +50,10 @@
 }
 
 .menu-item:hover{
+    background-color: #2a2d35;
+}
+
+.active{
     background-color: #2a2d35;
 }
 

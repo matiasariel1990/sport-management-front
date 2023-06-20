@@ -6,21 +6,26 @@
         <ion-icon (click)="activarMenu()" class = 'nav-bar-menu' name="menu-outline"></ion-icon>
     </div>
     <div class="menu" [ngClass]="clasesMenu()">
-        <li class="menu-item">
+        <a class="menu-item" (click)="activarMenu()"
+            routerLink="home" routerLinkActive="active">
             Home <ion-icon name="chevron-forward-outline"></ion-icon>
-        </li>
-        <li class="menu-item">
+        </a>
+        <a class="menu-item" (click)="activarMenu()"
+            routerLink="entrenamientos" routerLinkActive="active">
             Entrenamientos <ion-icon name="chevron-forward-outline"></ion-icon>
-        </li>
-        <li class="menu-item">
+        </a>
+        <a class="menu-item" (click)="activarMenu()"
+            routerLink="equipos" routerLinkActive="active">
             Equipos <ion-icon name="chevron-forward-outline"></ion-icon>
-        </li>
-        <li class="menu-item">
+        </a>
+        <a class="menu-item" (click)="activarMenu()"
+            routerLink="jugadores" routerLinkActive="active">
             Jugadores <ion-icon name="chevron-forward-outline"></ion-icon>
-        </li>
-        <li class="menu-item">
+        </a>
+        <a class="menu-item" (click)="activarMenu()"
+            routerLink="contacto" routerLinkActive="active">
             Contacto <ion-icon name="chevron-forward-outline"></ion-icon>
-        </li>
+        </a>
     </div>
 </div>
 
