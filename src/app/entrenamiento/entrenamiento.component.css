@@ -38,7 +38,8 @@
 
 
 .title-info{
-    color:rgb(37, 37, 37)
+    color:rgb(37, 37, 37);
+    margin-bottom: 0.3rem;
 }
 
 .info{
@@ -52,4 +53,5 @@
     margin-left: 0.3rem; 
     margin-bottom: 0.3rem; 
 }
+
 

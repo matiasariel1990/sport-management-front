@@ -10,17 +10,16 @@
             </div>
         </div>
         <div class="sub-section">
-         <a class="title-info"><strong>Equipos convocados:</strong></a> &nbsp; <a class="info" *ngIf="!tieneEquipos()">No hay equipos convocados!</a> 
-        <div>
+         <div class="title-info">
+            <a class="title-info">Equipos convocados:</a>
+            &nbsp; 
+            <a class="info" *ngIf="!tieneEquipos()">No hay equipos convocados!</a> 
+        
+         </div>
+            <div>
             <div class="lista" *ngFor="let equipo of equiposDelEvento;">
                 <li>{{equipo.name}}</li>
             </div>
-            <p *ngIf="!tieneEquipos()">No hay equipos convocados!</p>
-        <div class="sub-section">
-         <a class="title-info"><strong>Equipos convocados:</strong></a> &nbsp; <a class="info" *ngIf="!tieneEquipos()">No hay equipos convocados!</a> 
-        <div class="lista">            
-            <li *ngFor="let equipo of equiposDelEvento;">{{equipo.name}}</li>
-        </div>
         </div>
     </div>
     <div class="btn-section section" [ngClass]="isSelected()">
