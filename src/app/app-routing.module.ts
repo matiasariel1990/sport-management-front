@@ -5,6 +5,12 @@ import { EquipoComponent } from './equipo/equipo.component';
 import { EntrenamientoComponent } from './entrenamiento/entrenamiento.component';
 import { HomeComponent } from './home/home.component';
 import { JugadorComponent } from './jugador/jugador.component';
+import { CommonModule } from '@angular/common';
+
+import { IonicModule } from '@ionic/angular';
+import { MatTableModule } from '@angular/material/table';
+
+
 
 const routes : Routes = [
   {path: '', component: HomeComponent},
@@ -14,7 +20,20 @@ const routes : Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  declarations: [
+    EquipoComponent,
+    EntrenamientoComponent,
+    HomeComponent,
+    JugadorComponent
+  ],
+  imports: [
+    CommonModule, 
+    MatTableModule,
+    IonicModule.forRoot(),
+    RouterModule.forRoot(routes)],
+  exports: [
+    RouterModule,
+    IonicModule
+  ]
 })
 export class AppRoutingModule { }

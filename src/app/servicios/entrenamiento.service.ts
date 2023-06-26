@@ -58,7 +58,6 @@ export class EntrenamientoService {
 
   public getEntrenamientoById(id : number) : Entrenamiento{
     let entrenamientoResult : Entrenamiento;
-    debugger;
     for(let entrenamiento of this.siguientesEntrenamientos){
       if(entrenamiento.id == id){
         return entrenamiento;

@@ -15,6 +15,7 @@ export interface Calificacionugador{
   calificacion: Calificacion;
 }
 
+
 export class CalificacionugadorImpl implements Calificacionugador{
   jugador = JUGADOR;
   calificacion = CLASIFICACION;
