@@ -1,14 +1,34 @@
+<div class="container">
+  <h3 class="title-page">
+    Administra tus equipos!
+  </h3>
+  <div class="items">
+    <li class="item">
+      <ion-icon name="create-outline"></ion-icon> 
+      Edita tus equipos.</li>
+    <li class="item">
+      <ion-icon name="person-add-outline"></ion-icon> 
+      Agregar jugadores.</li>
+    <li class="item">
+      <ion-icon name="stats-chart-outline"></ion-icon> 
+      Ver las estadisticas.</li>
+    <li class="item">
+      <ion-icon name="calendar-number-outline"></ion-icon>
+      Crear una serie de entrenamientos.</li>
+    <li class="item">
+      <ion-icon name="send-outline"></ion-icon>
+      Notificar a los jugadores.</li>
+    <li class="item seleccionable">
+      <ion-icon class="seleccionable" name="add-circle-outline"></ion-icon>
+      Agregar Equipo.</li>
+  </div>
 
-<h3>
-  Administra tus equipos!
-</h3>
-<div>
-  <li>Podes editar tus equipos actuales.</li>
-  <li>Agregar jugadores.</li>
-  <li>Ver las estadisticas.</li>
-  <li>Crear una serie de entrenamientos.</li>
-  <li>Notificar a los jugadores.</li>
+  <div class="work-area">
+
+  </div>
 </div>
+
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
     <!-- Id Column -->
     <ng-container matColumnDef="id">

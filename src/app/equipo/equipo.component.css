@@ -12,3 +12,26 @@
   .demo-row-is-clicked {
     font-weight: bold;
   }
+
+  .title-page{
+    text-align: center;
+    font-weight: 500;
+  }
+
+  .items{
+    list-style: none;
+    padding-left: 2rem;
+  }
+
+  .item{
+    z-index: -1;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .seleccionable{
+    cursor: pointer;
+  }
+  
